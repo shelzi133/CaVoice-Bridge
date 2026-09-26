@@ -83,7 +83,7 @@ data class BridgeConfig(
               jitter-frames: 2
 
             discs:
-              enabled: true
+              enabled: true #Includes disk support. A server restart is required.
 
             # Per-world distance overrides (optional)
             # worlds:

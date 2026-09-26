@@ -122,7 +122,6 @@ Permission: `voicebridge.admin` (default: op)
 
 - Group/channel bridging is not supported (proximity chat only)
 - Transcoding mode is not yet implemented (passthrough only)
-- SVC-only players may not receive audio from PV players in some edge cases
 
 ## License
 

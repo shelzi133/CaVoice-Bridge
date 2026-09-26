@@ -30,9 +30,8 @@ The main difference between this fork and the regular version is the ability to 
 ## Installation
 
 1. Install both Simple Voice Chat and Plasmo Voice on your Paper server
-2. Download `voice-bridge-<version>.jar` from [Modrinth](https://modrinth.com/plugin/voice-bridge)
-3. Place it in your server's `plugins/` directory
-4. Restart the server
+2. Place it in your server's `plugins/` directory
+3. Restart the server
 
 ## Building from source
 

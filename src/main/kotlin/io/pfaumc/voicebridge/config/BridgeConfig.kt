@@ -14,6 +14,7 @@ data class BridgeConfig(
     val forceTranscode: Boolean = false,
     val repacing: Boolean = true,
     val repacingJitterFrames: Int = 2,
+    val discsEnabled: Boolean = true,
     val worldOverrides: Map<String, Double> = emptyMap()
 ) {
     companion object {
@@ -49,6 +50,7 @@ data class BridgeConfig(
                 forceTranscode = yaml.getBoolean("audio.force-transcode", false),
                 repacing = yaml.getBoolean("audio.repacing", true),
                 repacingJitterFrames = yaml.getInt("audio.jitter-frames", 2),
+                discsEnabled = yaml.getBoolean("discs.enabled", true),
                 worldOverrides = worldOverrides
             )
         }
@@ -79,6 +81,9 @@ data class BridgeConfig(
               # Frames to pre-buffer before draining (each frame is 20ms). Higher = smoother under
               # jitter but more latency. 2 = ~40ms added.
               jitter-frames: 2
+
+            discs:
+              enabled: true
 
             # Per-world distance overrides (optional)
             # worlds:

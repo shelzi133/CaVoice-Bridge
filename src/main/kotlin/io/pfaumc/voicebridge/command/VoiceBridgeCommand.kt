@@ -113,6 +113,7 @@ object VoiceBridgeCommand {
                 stat("PV → SVC frames", BridgeMetrics.plasmoToSvcFrames.get()),
                 stat("Dropped frames", BridgeMetrics.droppedFrames.get()),
                 stat("Transcoded frames", BridgeMetrics.transcodingCount.get()),
+                stat("Disc frames (PV)", BridgeMetrics.discFrames.get()),
                 Component.text("  Debug: ", LABEL)
                     .append(
                         Component.text(

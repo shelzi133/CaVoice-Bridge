@@ -1,6 +1,7 @@
 package io.pfaumc.voicebridge
 
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
+import io.pfaumc.voicebridge.adapter.CustomDiscsAdapter
 import io.pfaumc.voicebridge.adapter.PvAdapter
 import io.pfaumc.voicebridge.adapter.SvcAdapter
 import io.pfaumc.voicebridge.command.VoiceBridgeCommand
@@ -32,6 +33,7 @@ class VoiceBridgePlugin : JavaPlugin() {
 
     private var svcAdapter: SvcAdapter? = null
     private var pvAdapter: PvAdapter? = null
+    private var discsAdapter: CustomDiscsAdapter? = null
 
     private val scope = CoroutineScope(
         SupervisorJob() + CoroutineName("VoiceBridge")
@@ -77,6 +79,10 @@ class VoiceBridgePlugin : JavaPlugin() {
         svcAdapter?.pvAdapter = pvAdapter
         pvAdapter?.svcAdapter = svcAdapter
 
+        if (bridgeConfig.discsEnabled) {
+            pvAdapter?.let { pv -> initDiscsAdapter(pv) }
+        }
+
         // Start cleanup coroutine
         scope.launch {
             while (isActive) {
@@ -96,6 +102,7 @@ class VoiceBridgePlugin : JavaPlugin() {
     }
 
     override fun onDisable() {
+        discsAdapter?.shutdown()
         svcAdapter?.shutdown()
         pvAdapter?.shutdown()
         sessionManager.clear()
@@ -180,6 +187,16 @@ class VoiceBridgePlugin : JavaPlugin() {
             logger.info("Plasmo Voice not found on classpath")
             false
         }
+    }
+
+    private fun initDiscsAdapter(pv: PvAdapter) {
+        try {
+            Class.forName("space.subkek.customdiscs.api.CustomDiscsAPI")
+        } catch (e: ClassNotFoundException) {
+            logger.info("CustomDiscs-SVC not found on classpath — music disc bridging disabled")
+            return
+        }
+        discsAdapter = CustomDiscsAdapter(this, pv).also { it.start() }
     }
 
     companion object {

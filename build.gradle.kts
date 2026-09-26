@@ -24,6 +24,10 @@ repositories {
     maven("https://repo.plasmoverse.com/snapshots") {
         name = "plasmoverse-snapshots"
     }
+
+    maven("https://repo.subkek.space/maven-public/") {
+        name = "subkek"
+    }
 }
 
 dependencies {
@@ -38,6 +42,8 @@ dependencies {
     compileOnly("su.plo.voice.api:server-proxy-common:${project.properties["plasmo.voice.version"]}")
     compileOnly("su.plo.voice:protocol:${project.properties["plasmo.voice.version"]}")
     compileOnly("su.plo.slib:api-server:1.2.0")
+
+    compileOnly("space.subkek:customdiscs-api:1.0.0-SNAPSHOT")
 
     compileOnly(kotlin("stdlib"))
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")

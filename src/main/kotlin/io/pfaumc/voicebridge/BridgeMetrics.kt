@@ -10,6 +10,7 @@ object BridgeMetrics {
     val plasmoToSvcFrames = AtomicLong(0)
     val droppedFrames = AtomicLong(0)
     val transcodingCount = AtomicLong(0)
+    val discFrames = AtomicLong(0)
 
     fun reset() {
         activeSessions.set(0)
@@ -17,6 +18,7 @@ object BridgeMetrics {
         plasmoToSvcFrames.set(0)
         droppedFrames.set(0)
         transcodingCount.set(0)
+        discFrames.set(0)
     }
 
     fun log(logger: Logger) {
@@ -25,7 +27,8 @@ object BridgeMetrics {
                 "svc->pv=${svcToPlasmoFrames.get()}, " +
                 "pv->svc=${plasmoToSvcFrames.get()}, " +
                 "dropped=${droppedFrames.get()}, " +
-                "transcoded=${transcodingCount.get()}"
+                "transcoded=${transcodingCount.get()}, " +
+                "discFrames=${discFrames.get()}"
         )
     }
 }

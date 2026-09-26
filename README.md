@@ -69,6 +69,10 @@ proximity:
 audio:
   passthrough: true            # Opus passthrough (recommended)
   force-transcode: false       # Force transcoding (not yet implemented)
+
+discs:
+  enabled: true #Includes disk support. A server restart is required.
+
 ```
 
 ### Per-world distance overrides

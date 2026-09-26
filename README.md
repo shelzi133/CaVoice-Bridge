@@ -16,6 +16,10 @@ SVC Player ──► SVC API ──► Voice Bridge ──► PV API ──► P
 PV Player  ──► PV API  ──► Voice Bridge ──► SVC API ──► SVC Player
 ```
 
+## What has been added?
+
+The main difference between this fork and the regular version is the ability to listen to CustomDiscs SVC records via Plasmo Voice.
+
 ## Requirements
 
 - Paper 1.21.4+ (or Folia)
